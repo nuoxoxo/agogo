@@ -26,6 +26,17 @@ func (g *Graph) setVertex(k int) {
 //      .contains
 
 
+func (e *Graph) printGraph() {
+    for _, v := range e.vertices {
+        fmt.Printf("\nvertex %v : ", v.key)
+        for _, v := range v.adjacent {
+            fmt.Printf("%v", v.key)
+        }
+    }
+    fmt.Println()
+}
+
+
 //  Drive
 
 func main() {
@@ -37,5 +48,6 @@ func main() {
     }
 
     fmt.Println(e)
+    e.printGraph()
 }
 
