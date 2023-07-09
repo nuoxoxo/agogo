@@ -16,9 +16,23 @@ type Vertex struct {
 }
 
 func (g *Graph) setVertex(k int) {
+    // check if key already exists - .contains
+    if contains(g.vertices, k) {
+        err := fmt.Errorf("key existed: %v", k)
+        fmt.Println(err.Error())
+        return
+    }
     g.vertices = append(g.vertices, & Vertex{ key: k })
 }
 
+func contains(vs []*Vertex, k int) bool {
+    for _, v := range vs {
+        if k == v.key {
+            return true
+        }
+    }
+    return false
+}
 
 //  Todo
 //      getter/setter vertex
@@ -40,14 +54,20 @@ func (e *Graph) printGraph() {
 //  Drive
 
 func main() {
-    e := & Graph{}
 
+    e := & Graph{}
+    fmt.Println()
 
     for i := 0; i < 12; i++ {
         e.setVertex(i)
     }
 
     fmt.Println(e)
+
+    // duplication-check
+    e.setVertex(0)
+    e.setVertex(0)
+
     e.printGraph()
 }
 
