@@ -40,6 +40,19 @@ func contains(vs []*Vertex, k int) bool {
 //      .contains
 
 
+
+func (g *Graph) setEdge(from, to int) {
+    // get vertex
+    fromVertex := g.getVertex(from)
+    toVertex := g.getVertex(to)
+
+    // check error
+
+    // add/set edge
+    fromVertex.adjacent = append(fromVertex.adjacent, toVertex)
+}
+
+
 func (e *Graph) printGraph() {
     for _, v := range e.vertices {
         fmt.Printf("\nvertex %v : ", v.key)
@@ -58,16 +71,22 @@ func main() {
     e := & Graph{}
     fmt.Println()
 
+
     for i := 0; i < 12; i++ {
         e.setVertex(i)
     }
 
     fmt.Println(e)
 
+    /*
     // duplication-check
     e.setVertex(0)
     e.setVertex(0)
+    */
 
+    e.setEdge(1, 2)
+    e.setEdge(1, 2)
     e.printGraph()
+
 }
 
