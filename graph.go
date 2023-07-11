@@ -56,6 +56,11 @@ func (g *Graph) setEdge(from, to int) {
     toVertex := g.getVertex(to)
 
     // check error
+    if fromVertex == nil || toVertex == nil {
+        err := fmt.Errorf("invalid setter: (%v-->%v)", from, to)
+        fmt.Println(err.Error())
+        return
+    }
 
     // add/set edge
     fromVertex.adjacent = append(fromVertex.adjacent, toVertex)
@@ -66,7 +71,7 @@ func (e *Graph) printGraph() {
     for _, v := range e.vertices {
         fmt.Printf("\nvertex %v : ", v.key)
         for _, v := range v.adjacent {
-            fmt.Printf("%v, ", v.key)
+            fmt.Printf("%v ", v.key)
         }
     }
     fmt.Println()
@@ -94,7 +99,7 @@ func main() {
     */
 
     e.setEdge(1, 2)
-    e.setEdge(1, 2)
+    e.setEdge(12 + 1, 2) // 'from' is invalid
     e.printGraph()
 
 }
