@@ -15,7 +15,7 @@ type Vertex struct {
     adjacent []*Vertex
 }
 
-func (g * Graph) getVertext(k int) *Vertex {
+func (g * Graph) getVertex(k int) *Vertex {
     for i, v := range g.vertices {
         if v.key == k {
             return g.vertices[i]
@@ -66,7 +66,7 @@ func (e *Graph) printGraph() {
     for _, v := range e.vertices {
         fmt.Printf("\nvertex %v : ", v.key)
         for _, v := range v.adjacent {
-            fmt.Printf("%v", v.key)
+            fmt.Printf("%v, ", v.key)
         }
     }
     fmt.Println()
