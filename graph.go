@@ -27,7 +27,7 @@ func (g * Graph) getVertex(k int) *Vertex {
 func (g *Graph) setVertex(k int) {
     // check if key already exists - .contains
     if contains(g.vertices, k) {
-        err := fmt.Errorf("key existed: %v", k)
+        err := fmt.Errorf("key existed:\t%v", k)
         fmt.Println(err.Error())
         return
     }
@@ -57,7 +57,11 @@ func (g *Graph) setEdge(from, to int) {
 
     // check error
     if fromVertex == nil || toVertex == nil {
-        err := fmt.Errorf("invalid setter: (%v-->%v)", from, to)
+        err := fmt.Errorf("invalid setter:\t(%v-->%v)", from, to)
+        fmt.Println(err.Error())
+        return
+    } else if contains(fromVertex.adjacent, to) {
+        err := fmt.Errorf("existing edge:\t(%v-->%v)", from, to)
         fmt.Println(err.Error())
         return
     }
@@ -90,7 +94,8 @@ func main() {
         e.setVertex(i)
     }
 
-    fmt.Println(e)
+    // print entire list of pointers
+    // fmt.Println(e)
 
     /*
     // duplication-check
@@ -98,7 +103,8 @@ func main() {
     e.setVertex(0)
     */
 
-    e.setEdge(1, 2)
+    e.setEdge(4, 2)
+    e.setEdge(4, 2)
     e.setEdge(12 + 1, 2) // 'from' is invalid
     e.printGraph()
 
