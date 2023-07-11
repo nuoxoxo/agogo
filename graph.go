@@ -15,6 +15,15 @@ type Vertex struct {
     adjacent []*Vertex
 }
 
+func (g * Graph) getVertext(k int) *Vertex {
+    for i, v := range g.vertices {
+        if v.key == k {
+            return g.vertices[i]
+        }
+    }
+    return nil
+}
+
 func (g *Graph) setVertex(k int) {
     // check if key already exists - .contains
     if contains(g.vertices, k) {
