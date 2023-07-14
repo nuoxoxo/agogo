@@ -15,24 +15,7 @@ type Vertex struct {
     adjacent []*Vertex
 }
 
-func (g * Graph) getVertex(k int) *Vertex {
-    for i, v := range g.vertices {
-        if v.key == k {
-            return g.vertices[i]
-        }
-    }
-    return nil
-}
-
-func (g *Graph) setVertex(k int) {
-    // check if key already exists - .contains
-    if contains(g.vertices, k) {
-        err := fmt.Errorf("key existed:\t%v", k)
-        fmt.Println(err.Error())
-        return
-    }
-    g.vertices = append(g.vertices, & Vertex{ key: k })
-}
+//  Method : Contain
 
 func contains(vs []*Vertex, k int) bool {
     for _, v := range vs {
@@ -43,14 +26,30 @@ func contains(vs []*Vertex, k int) bool {
     return false
 }
 
-//  Todo
-//      getter/setter vertex
-//      setter edge
-//      .contains
+//  Vertex
 
+func (g * Graph) getVertex(k int) *Vertex {
+    for i, v := range g.vertices {
+        if v.key == k {
+            return g.vertices[i]
+        }
+    }
+    return nil
+}
 
+func (g *Graph) addVertex(k int) {
+    // check if key already exists - .contains
+    if contains(g.vertices, k) {
+        err := fmt.Errorf("key existed:\t%v", k)
+        fmt.Println(err.Error())
+        return
+    }
+    g.vertices = append(g.vertices, & Vertex{ key: k })
+}
 
-func (g *Graph) setEdge(from, to int) {
+//  Edges
+
+func (g *Graph) addEdge(from, to int) {
     // get vertex
     fromVertex := g.getVertex(from)
     toVertex := g.getVertex(to)
@@ -58,7 +57,7 @@ func (g *Graph) setEdge(from, to int) {
     // check error
     if fromVertex == nil || toVertex == nil {
         // case : either `from` or `to` is wrong
-        err := fmt.Errorf("invalid setter:\t(%v-->%v)", from, to)
+        err := fmt.Errorf("invalid tunnel:\t(%v-->%v)", from, to)
         fmt.Println(err.Error())
         return
     } else if contains(fromVertex.adjacent, to) {
@@ -67,7 +66,7 @@ func (g *Graph) setEdge(from, to int) {
         return
     }
 
-    // add/set edge
+    // add/add edge
     fromVertex.adjacent = append(fromVertex.adjacent, toVertex)
 }
 
@@ -92,7 +91,7 @@ func main() {
 
 
     for i := 0; i < 12; i++ {
-        e.setVertex(i)
+        e.addVertex(i)
     }
 
     // print entire list of pointers
@@ -100,13 +99,13 @@ func main() {
 
     /*
     // duplication-check
-    e.setVertex(0)
-    e.setVertex(0)
+    e.addVertex(0)
+    e.addVertex(0)
     */
 
-    e.setEdge(4, 2)
-    e.setEdge(4, 2)
-    e.setEdge(12 + 1, 2) // 'from' is invalid
+    e.addEdge(4, 2)
+    e.addEdge(4, 2)
+    e.addEdge(12 + 1, 2) // 'from' is invalid
     e.printGraph()
 
 }
