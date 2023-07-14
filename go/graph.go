@@ -57,6 +57,7 @@ func (g *Graph) setEdge(from, to int) {
 
     // check error
     if fromVertex == nil || toVertex == nil {
+        // case : either `from` or `to` is wrong
         err := fmt.Errorf("invalid setter:\t(%v-->%v)", from, to)
         fmt.Println(err.Error())
         return
