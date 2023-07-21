@@ -1,5 +1,9 @@
 package main
-import "fmt"
+
+import (
+    "fmt"
+    "_colors"
+)
 
 type Node struct {
 
@@ -23,7 +27,7 @@ func (lst *Linkedlist) unshift (node *Node) {
 
 func (lst *Linkedlist) printFullList () {
 
-    fmt.Println()
+    fmt.Println(Cyan + "\n(printer : begin)\n" + Reset)
 
     node := lst.head
     n := 0
@@ -33,15 +37,47 @@ func (lst *Linkedlist) printFullList () {
         node = node.next
         n += 1
     }
+
+    fmt.Println(Cyan + "\n(printer : end)\n" + Reset)
 }
 
 func main() {
 
-    list := Linkedlist{}
-    list.unshift( &Node{data: 21} )
-    list.unshift( &Node{data: 42} )
-    list.unshift( &Node{data: -1} )
+    {
 
-    list.printFullList()
+        list := Linkedlist{}
+
+        fmt.Println(list)
+
+        list.unshift( &Node{data: 42} )
+        list.unshift( &Node{data: 21} )
+        list.unshift( &Node{data: 0} )
+        list.unshift( &Node{data: -1} )
+
+        fmt.Println(list)
+
+        list.printFullList()
+    }
+    {
+
+        list := Linkedlist{}
+
+        fmt.Println(list)
+
+        n1 := &Node{data: 42}
+        n2 := &Node{data: 21}
+        n3 := &Node{data: 0}
+        n4 := &Node{data: -1}
+
+        list.unshift( n1 )
+        list.unshift( n2 )
+        list.unshift( n3 )
+        list.unshift( n4 )
+
+
+        fmt.Println(list)
+
+        list.printFullList()
+    }
 }
 
