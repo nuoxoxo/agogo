@@ -1,42 +1,47 @@
 package main
 import "fmt"
 
-type node struct {
+type Node struct {
 
     data int
-    next *node
+    next *Node
 }
 
-type linkedlist struct {
+type Linkedlist struct {
 
-    head *node
+    head *Node
     length int
 }
 
-func (lst *linkedlist) unshift (n *node) {
+func (lst *Linkedlist) unshift (node *Node) {
 
-    second := list.head
+    second := lst.head
     lst.head = node
     lst.head.next = second
     lst.length -= 1
 }
 
-func (lst *linkedlist) printFullList () {
+func (lst *Linkedlist) printFullList () {
+
+    fmt.Println()
 
     node := lst.head
-    while node {
+    n := 0
+    for node != nil {
 
-        fmt.Println("")
+        fmt.Printf("node %d : %v \n", n, node.data)
+        node = node.next
+        n += 1
     }
 }
 
 func main() {
 
-    list := linkedlist{}
-    list.unshift( &node{data: 21} )
-    list.unshift( &node{data: 42} )
-    list.unshift( &node{data: -1} )
+    list := Linkedlist{}
+    list.unshift( &Node{data: 21} )
+    list.unshift( &Node{data: 42} )
+    list.unshift( &Node{data: -1} )
 
-
+    list.printFullList()
 }
 
