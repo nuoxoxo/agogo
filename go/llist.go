@@ -2,7 +2,7 @@ package main
 
 import (
     "fmt"
-    "_colors"
+    "/Users/xunuo/sea/gg/go/_colors"
 )
 
 type Node struct {
@@ -25,10 +25,11 @@ func (lst *Linkedlist) unshift (node *Node) {
     lst.length -= 1
 }
 
-func (lst *Linkedlist) printFullList () {
+func (lst *Linkedlist) print () {
 
-    fmt.Println(Cyan + "\n(printer : begin)\n" + Reset)
+    fmt.Println(Cyan + "\n(printer : start, length = %d)\n" + Reset, lst.length)
 
+    // fmt.Printf(" - length: %d \n", lst.length)
     node := lst.head
     n := 0
     for node != nil {
@@ -56,7 +57,7 @@ func main() {
 
         fmt.Println(list)
 
-        list.printFullList()
+        list.print()
     }
     {
 
@@ -77,7 +78,7 @@ func main() {
 
         fmt.Println(list)
 
-        list.printFullList()
+        list.print()
     }
 }
 
