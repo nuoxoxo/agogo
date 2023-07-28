@@ -2,8 +2,10 @@ package main
 
 import (
     "fmt"
-    "/Users/xunuo/sea/gg/go/_colors"
 )
+
+const Cyan = "\033[0;36m"
+const Reset = "\033[0m"
 
 type Node struct {
 
@@ -23,6 +25,7 @@ func (lst *Linkedlist) unshift (node *Node) {
     lst.head = node
     lst.head.next = second
     // lst.length -= 1 // buggy
+    lst.length += 1
 }
 
 func (lst *Linkedlist) print () {
