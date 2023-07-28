@@ -4,8 +4,10 @@ import (
     "fmt"
 )
 
+
 const Cyan = "\033[0;36m"
 const Reset = "\033[0m"
+
 
 type Node struct {
 
@@ -13,13 +15,26 @@ type Node struct {
     Next *Node
 }
 
+
 type Linkedlist struct {
 
     Head *Node
     Length int
 }
 
-// func (lst *Linkedlist) deleteValue () {
+
+func (lst *Linkedlist) deleteByValue (targetVal int) {
+
+    // find the prev node of the target node
+    prev := lst.Head
+    for prev.Next != nil && prev.Next.Data != targetVal {
+
+        prev = prev.Next
+    }
+    prev.Next = prev.Next.Next
+    lst.Length -= 1
+}
+
 
 func (lst *Linkedlist) unshift (node *Node) {
 
@@ -29,6 +44,7 @@ func (lst *Linkedlist) unshift (node *Node) {
     // lst.Length -= 1 // buggy
     lst.Length += 1
 }
+
 
 func (lst *Linkedlist) print () {
 
@@ -46,6 +62,7 @@ func (lst *Linkedlist) print () {
 
     fmt.Println(Cyan + "\n(printer ends)\n" + Reset)
 }
+
 
 func main() {
 
@@ -82,6 +99,11 @@ func main() {
 
 
         fmt.Println(list)
+
+        fmt.Println("try deleting the node {42}")
+        list.deleteByValue(42)
+        fmt.Println(list)
+
 
         list.print()
     }
