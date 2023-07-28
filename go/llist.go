@@ -22,7 +22,7 @@ func (lst *Linkedlist) unshift (node *Node) {
     second := lst.head
     lst.head = node
     lst.head.next = second
-    lst.length -= 1
+    // lst.length -= 1 // buggy
 }
 
 func (lst *Linkedlist) print () {
