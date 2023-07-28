@@ -6,6 +6,7 @@ import (
 
 
 const Cyan = "\033[0;36m"
+const Yell = "\033[33m"
 const Reset = "\033[0m"
 
 
@@ -25,10 +26,35 @@ type Linkedlist struct {
 
 func (lst *Linkedlist) deleteByValue (targetVal int) {
 
+    // prevent empty list
+
+    if lst.Length == 0 {
+
+        return
+    }
+
+    // if target node is the head
+
+    if lst.Head.Data == targetVal {
+
+        lst.Head = lst.Head.Next
+        lst.Length -= 1
+        return
+    }
+
+    // (if no node matches : to handle inside traversal)
+
+
     // find the prev node of the target node
     prev := lst.Head
     for prev.Next != nil && prev.Next.Data != targetVal {
 
+        // if not found
+        if prev.Next.Next == nil {
+
+            fmt.Println(Yell + "(target to delete not found)" + Reset)
+            return
+        }
         prev = prev.Next
     }
     prev.Next = prev.Next.Next
@@ -104,6 +130,9 @@ func main() {
         list.deleteByValue(42)
         fmt.Println(list)
 
+        fmt.Println("try deleting a node that is not there {1024}")
+        list.deleteByValue(1024)
+        fmt.Println(list)
 
         list.print()
     }
