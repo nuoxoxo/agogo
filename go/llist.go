@@ -9,40 +9,42 @@ const Reset = "\033[0m"
 
 type Node struct {
 
-    data int
-    next *Node
+    Data int
+    Next *Node
 }
 
 type Linkedlist struct {
 
-    head *Node
-    length int
+    Head *Node
+    Length int
 }
+
+// func (lst *Linkedlist) deleteValue () {
 
 func (lst *Linkedlist) unshift (node *Node) {
 
-    second := lst.head
-    lst.head = node
-    lst.head.next = second
-    // lst.length -= 1 // buggy
-    lst.length += 1
+    second := lst.Head
+    lst.Head = node
+    lst.Head.Next = second
+    // lst.Length -= 1 // buggy
+    lst.Length += 1
 }
 
 func (lst *Linkedlist) print () {
 
-    fmt.Println(Cyan + "\n(printer : start, length = %d)\n" + Reset, lst.length)
+    fmt.Printf(Cyan + "\n(printer starts, Length = %v)\n" + Reset, lst.Length)
 
-    // fmt.Printf(" - length: %d \n", lst.length)
-    node := lst.head
+    // fmt.Printf(" - Length: %d \n", lst.Length)
+    node := lst.Head
     n := 0
     for node != nil {
 
-        fmt.Printf("node %d : %v \n", n, node.data)
-        node = node.next
+        fmt.Printf("node %d : %v \n", n, node.Data)
+        node = node.Next
         n += 1
     }
 
-    fmt.Println(Cyan + "\n(printer : end)\n" + Reset)
+    fmt.Println(Cyan + "\n(printer ends)\n" + Reset)
 }
 
 func main() {
@@ -53,10 +55,10 @@ func main() {
 
         fmt.Println(list)
 
-        list.unshift( &Node{data: 42} )
-        list.unshift( &Node{data: 21} )
-        list.unshift( &Node{data: 0} )
-        list.unshift( &Node{data: -1} )
+        list.unshift( &Node{Data: 42} )
+        list.unshift( &Node{Data: 21} )
+        list.unshift( &Node{Data: 0} )
+        list.unshift( &Node{Data: -1} )
 
         fmt.Println(list)
 
@@ -68,10 +70,10 @@ func main() {
 
         fmt.Println(list)
 
-        n1 := &Node{data: 42}
-        n2 := &Node{data: 21}
-        n3 := &Node{data: 0}
-        n4 := &Node{data: -1}
+        n1 := &Node{Data: 42}
+        n2 := &Node{Data: 21}
+        n3 := &Node{Data: 0}
+        n4 := &Node{Data: -1}
 
         list.unshift( n1 )
         list.unshift( n2 )
