@@ -14,6 +14,8 @@ Private \
   - (Max)HeapifyUp
   - (Max)HeapifyDown
   - swap
+
+Math func
 - :orange_circle: `function`
   - parent
   - left
