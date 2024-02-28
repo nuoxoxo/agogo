@@ -1,10 +1,12 @@
 Public (accessible from outside) \
 <kbd>PascalCase</kbd>
 - :red_circle: `struct`
-  - MaxHeap
+  - Heapq
 - :green_circle: `method`
-  - Insert
-  - Extract
+  - Heappush
+  - Heappop
+  - Heapify
+  - Size
 
 Private \
 <kbd>CamelCase</kbd>
