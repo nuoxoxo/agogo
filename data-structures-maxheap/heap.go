@@ -18,13 +18,13 @@ func Heapify(Slice []int) (hq *Heapq) {
 
 func (hq *Heapq) Heappush(key int) {
 	hq.Arr = append(hq.Arr, key)
-	hq.heapifyUp(len(hq.Arr) - 1)
+	hq.heapifyUp(hq.Size() - 1)
 }
 
 // pop the largest key
 func (hq *Heapq) Heappop() int {
 	top := hq.Arr[0] // val?
-	N := len(hq.Arr)
+	N := hq.Size()
 	if N == 0 {
 		panic("popped an empty hq")
 	}
@@ -50,7 +50,7 @@ func (hq *Heapq) heapifyUp(index int) {
 
 func (hq *Heapq) heapifyDown(index int) {
 	// heapify top to bottom
-	N := len(hq.Arr)
+	N := hq.Size()
 	L := left(index)
 	R := right(index)
 
@@ -98,7 +98,7 @@ func main() {
 	fmt.Println("/init", Slice, len(Slice))
 
 	// testing two code blocks
-	choice := 1
+	choice := 0
 
 	var testq *Heapq
 
@@ -113,27 +113,27 @@ func main() {
 }
 
 func runTest_noHeapify(testq *Heapq, Slice []int) {
-	fmt.Println("/no Heapify", testq, testq.Size())
+	fmt.Println("/no Heapify", testq, "/len", testq.Size())
 	for _, n := range Slice {
 		testq.Heappush(n)
-		fmt.Println("/push", testq, testq.Size())
+		fmt.Println("/push", testq, "/len", testq.Size())
 	}
 	i := 0
 	for i < 5 {
 		i++
 		testq.Heappop()
-		fmt.Println("/Pop", testq)
+		fmt.Println("/Pop", testq, "/len", testq.Size())
 	}
 	fmt.Println("/end")
 }
 
 func runTest_useHeapify(testq *Heapq) {
-	fmt.Println("/w. Heapify", testq, testq.Size())
+	fmt.Println("/w. Heapify", testq, "/len", testq.Size())
 	i := 0
 	for i < 5 {
 		i++
 		testq.Heappop()
-		fmt.Println("/Pop", testq, testq.Size())
+		fmt.Println("/Pop", testq, "/len", testq.Size())
 	}
 	fmt.Println("/end")
 }
