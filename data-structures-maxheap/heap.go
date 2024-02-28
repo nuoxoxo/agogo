@@ -75,6 +75,26 @@ func (hq *Heapq) heapifyDown(index int) {
 
 }
 
+/*
+
+	   5                      13
+     /   \                  /    \
+   10     15              16      31
+  /                      /  \     /  \
+30                     41    51  100  41
+
+A Min Heap is a Complete Binary Tree.
+A Min heap is typically represented as an array.
+The root element will be at Arr[0].
+
+For any [i]th node, i.e., Arr[i]:
+
+Arr[(i -1) / 2] returns its parent node.
+Arr[(2 * i) + 1] returns its left child node.
+Arr[(2 * i) + 2] returns its right child node.
+
+*/
+
 func parentIndex(index int) int {
 	return (index - 1) / 2
 }
