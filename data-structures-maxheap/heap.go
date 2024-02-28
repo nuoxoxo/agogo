@@ -16,9 +16,18 @@ func Heapify(Slice []int) (hq *Heapq) {
 	return res
 }
 
+// O( height )
+//	or
+// O( log n )
+
 func (hq *Heapq) Heappush(key int) {
 	hq.Arr = append(hq.Arr, key)
+	// add to last index OR the bottom right node of BTree
+
 	hq.heapifyUp(hq.Size() - 1)
+	// this is 'heapify' ---> re-arrange the indices
+	// ---> swap if a node is smaller that its parent
+	// ---> this process starts from bottom up
 }
 
 // pop the largest key
@@ -30,7 +39,10 @@ func (hq *Heapq) Heappop() int {
 	}
 	hq.Arr[0] = hq.Arr[N-1]
 	hq.Arr = hq.Arr[:N-1]
+	// Pop the root node, ie. the largest key
+	// Replace root node w/ the last node, ie. the 2nd largest key
 	hq.heapifyDown(0)
+	// heapify ---> re-arrange the tree top-down
 	return top
 }
 
@@ -76,12 +88,21 @@ func (hq *Heapq) heapifyDown(index int) {
 }
 
 /*
+            50
+					/     \
+        /         \
+      16           48
+    /    \       /    \
+  14      8     34     20
+ /  \    /  \
+9    1  5    7
 
-	   5                      13
-     /   \                  /    \
-   10     15              16      31
-  /                      /  \     /  \
-30                     41    51  100  41
+          50
+        16  48
+     14  8  34  20
+9  1  5  7
+
+50 16 38 14 8 34 20 9 1 5 7
 
 A Min Heap is a Complete Binary Tree.
 A Min heap is typically represented as an array.
