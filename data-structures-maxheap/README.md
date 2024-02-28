@@ -1,4 +1,4 @@
-Public (Accessible from outside) \
+Public (accessible from outside) \
 <kbd>PascalCase</kbd>
 - :red_circle: `struct`
   - MaxHeap
