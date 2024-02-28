@@ -100,29 +100,40 @@ func main() {
 	// testing two code blocks
 	choice := 1
 
+	var testq *Heapq
+
 	// block 1 : Heappush 1 item at a time, no Heapify
 	if choice == 0 {
-		testq := &Heapq{}
-		fmt.Println("/no Heapify", testq, testq.Size())
-		for _, n := range Slice {
-			testq.Heappush(n)
-			fmt.Println("/Heappush", testq, testq.Size())
-		}
-		i := 0
-		for i < 5 {
-			i++
-			testq.Heappop()
-			fmt.Println("/Pop", testq)
-		}
-		// block 2 : using Heapify
+		testq = &Heapq{}
+		runTest_noHeapify(testq, Slice)
 	} else {
-		testq := Heapify(Slice)
-		fmt.Println("/w. Heapify", testq, testq.Size())
-		i := 0
-		for i < 5 {
-			i++
-			testq.Heappop()
-			fmt.Println("/Pop", testq, testq.Size())
-		}
+		testq = Heapify(Slice)
+		runTest_useHeapify(testq)
 	}
+}
+
+func runTest_noHeapify(testq *Heapq, Slice []int) {
+	fmt.Println("/no Heapify", testq, testq.Size())
+	for _, n := range Slice {
+		testq.Heappush(n)
+		fmt.Println("/push", testq, testq.Size())
+	}
+	i := 0
+	for i < 5 {
+		i++
+		testq.Heappop()
+		fmt.Println("/Pop", testq)
+	}
+	fmt.Println("/end")
+}
+
+func runTest_useHeapify(testq *Heapq) {
+	fmt.Println("/w. Heapify", testq, testq.Size())
+	i := 0
+	for i < 5 {
+		i++
+		testq.Heappop()
+		fmt.Println("/Pop", testq, testq.Size())
+	}
+	fmt.Println("/end")
 }
