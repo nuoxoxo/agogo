@@ -1,4 +1,5 @@
-# Chi :wind_face: + Redis :small_orange_diamond:
+__:wind_face: Chi \
+:small_orange_diamond: Redis__
 
 <details><summary>1.2</summary>
 
