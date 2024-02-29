@@ -18,7 +18,7 @@ func (bh *BarHandlers) Get(
 	writer http.ResponseWriter,
 	req *http.Request,
 ) {
-	barDBG(writer, req, "/Get")
+	barDBG(writer, req, "/List")
 }
 
 func (bh *BarHandlers) Update(
