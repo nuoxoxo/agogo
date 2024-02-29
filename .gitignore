@@ -23,3 +23,7 @@
 
 # Go workspace file
 go.work
+
+# Go Modules
+# go.mod
+go.sum
