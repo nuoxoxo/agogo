@@ -2,16 +2,52 @@ package main
 
 import (
 	"fmt"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+	_ "io/ioutil"
 	"net/http"
-	// _ "github.com/go-chi/chi/middleware"
-	_ "github.com/go-chi/chi/v5"
-	// "io/ioutil"
 )
 
 func main() {
+
+	router := chi.NewRouter()
+	router.Use(middleware.Logger)
+
+	routes := []struct {
+		Method string
+		Path   string
+	}{
+		{Method: http.MethodGet, Path: "/"}, // GET
+		{Method: http.MethodGet, Path: "/bar"},
+		{Method: http.MethodGet, Path: "/foo"},
+		{Method: http.MethodPost, Path: "/bar"}, // POST
+		{Method: http.MethodPost, Path: "/foo"},
+		{Method: http.MethodPatch, Path: "/bar"}, // PATCH
+		{Method: http.MethodPut, Path: "/foo"},   // PUT
+	}
+
+	/*
+		router := chi.NewRouter ()
+		router.Get("/", handler)
+		router.Get("/bar", handler)
+		router.Get("/foo", handler)
+		router.Post("/bar", handler)
+		router.Post("/foo", handler)
+		router.Patch("/bar", handler)
+		router.Put("/foo", handler)
+	*/
+
+	for _, route := range routes {
+		router.Method(
+			route.Method,
+			route.Path,
+			http.HandlerFunc(handler),
+		)
+	}
+
 	server := &http.Server{
 		Addr:    ":10086",
-		Handler: http.HandlerFunc(handler),
+		Handler: router, //http.HandlerFunc(handler),
 	}
 	err := server.ListenAndServe()
 	if err != nil {
@@ -20,11 +56,14 @@ func main() {
 }
 
 func handler(writer http.ResponseWriter, req *http.Request) {
+
 	path := req.URL.Path
 	writer.Write([]byte("Hello, World!\n"))
-	fmt.Println(path, req.Method)
-	if req.Method != http.MethodPost {
-		fmt.Println("\t/Not POST/", req.Method)
+
+	fmt.Println(req.Method, path)
+
+	if req.Method != http.MethodPost && req.Method != http.MethodGet {
+		fmt.Println("\t/Not POST/", req.Method, req.Method == http.MethodGet)
 	}
 	if len(req.URL.Query()) == 0 {
 		fmt.Println("\t/empty query")
@@ -32,5 +71,6 @@ func handler(writer http.ResponseWriter, req *http.Request) {
 	for k, v := range req.URL.Query() {
 		fmt.Println("\t/item", k, v)
 	}
-	fmt.Println("\t/end \n")
+
+	fmt.Print("\t/end \n\n")
 }
