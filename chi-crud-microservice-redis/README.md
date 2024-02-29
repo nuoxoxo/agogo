@@ -27,7 +27,9 @@ func main() {
 func handler(writer http.ResponseWriter, req *http.Request) {
 	path := req.URL.Path
 	writer.Write([]byte("Hello, World!\n"))
+
 	fmt.Println(path, req.Method)
+
 	if req.Method != http.MethodPost {
 		fmt.Println("\t/Not POST/", req.Method)
 	}
@@ -37,6 +39,7 @@ func handler(writer http.ResponseWriter, req *http.Request) {
 	for k, v := range req.URL.Query() {
 		fmt.Println("\t/item", k, v)
 	}
+
 	fmt.Println("\t/end \n")
 }
 
