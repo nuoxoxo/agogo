@@ -3,7 +3,6 @@
 $ go get -u github.com/go-chi/chi/v5
 ```
 # 1.1
-
 ```go
 package main
 
@@ -29,11 +28,18 @@ func handler(writer http.ResponseWriter, req *http.Request) {
 	path := req.URL.Path
 	writer.Write([]byte("Hello, World!\n"))
 	fmt.Println(path, req.Method)
-	if req.Method != http.MethodPost { fmt.Println("\t/Not POST/", req.Method) }
-	if len(req.URL.Query()) == 0 { fmt.Println("\t/empty query") }
-	for k, v := range req.URL.Query() { fmt.Println("\t/item", k, v) }
+	if req.Method != http.MethodPost {
+		fmt.Println("\t/Not POST/", req.Method)
+	}
+	if len(req.URL.Query()) == 0 {
+		fmt.Println("\t/empty query")
+	}
+	for k, v := range req.URL.Query() {
+		fmt.Println("\t/item", k, v)
+	}
 	fmt.Println("\t/end \n")
 }
+
 ```
 # 1
 `http.Server` - basic handler - `server.ListenAndServe` - 
