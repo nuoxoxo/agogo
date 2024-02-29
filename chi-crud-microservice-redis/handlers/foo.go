@@ -7,23 +7,36 @@ import (
 
 type FooHandlers struct{}
 
-func (fh *FooHandlers) Create(
-	writer http.ResponseWriter,
-	req *http.Request,
-) {
-	fmt.Println("/Create")
+func (fh *FooHandlers) Create( writer http.ResponseWriter, req *http.Request) {
+	fooHandlerHelper(writer, req, "/Create")
 }
 
-func (fh *FooHandlers) Get(
-	writer http.ResponseWriter,
-	req *http.Request,
-) {
-	fmt.Println("/GET (List)")
+func (fh *FooHandlers) Get( writer http.ResponseWriter, req *http.Request) {
+	fooHandlerHelper(writer, req, "/List")
 }
 
-func (fh *FooHandlers) Update(
+func (fh *FooHandlers) Update( writer http.ResponseWriter, req *http.Request) {
+	fooHandlerHelper(writer, req, "/Update")
+}
+
+// helper
+// lowercase name for :: unexported func
+func fooHandlerHelper (
 	writer http.ResponseWriter,
 	req *http.Request,
+	endpoint string,
 ) {
-	fmt.Println("/Update:PUT")
+
+	// write 418
+	writer.WriteHeader(http.StatusTeapot)
+	// DBG
+	fmt.Println(endpoint, req.URL.Path, req.Method)
+
+	// print out param/queryStr
+	if len(req.URL.Query()) == 0 {
+		fmt.Println("\t/empty query")
+	}
+	for k, v := range req.URL.Query() {
+		fmt.Println("\t/item", k, v)
+	}
 }
