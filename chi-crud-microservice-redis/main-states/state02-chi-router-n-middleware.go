@@ -63,7 +63,7 @@ func handler(writer http.ResponseWriter, req *http.Request) {
 	fmt.Println(req.Method, path)
 
 	if req.Method != http.MethodPost && req.Method != http.MethodGet {
-		fmt.Println("\t/Not POST/", req.Method, req.Method == http.MethodGet)
+		fmt.Println("\t/Not POST/", req.Method)//, req.Method == http.MethodGet)
 	}
 	if len(req.URL.Query()) == 0 {
 		fmt.Println("\t/empty query")
