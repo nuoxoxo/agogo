@@ -1,4 +1,9 @@
+# 1.1
+```
+$ go get -u github.com/go-chi/chi/v5
+```
 # 1
+`http.Server` - basic handler - `server.ListenAndServe` - 
 ```
 ### Do after doing the following
 
