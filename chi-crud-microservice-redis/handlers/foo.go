@@ -8,20 +8,20 @@ import (
 type FooHandlers struct{}
 
 func (fh *FooHandlers) Create( writer http.ResponseWriter, req *http.Request) {
-	fooHandlerHelper(writer, req, "/Create")
+	fooDBG(writer, req, "/Create")
 }
 
 func (fh *FooHandlers) Get( writer http.ResponseWriter, req *http.Request) {
-	fooHandlerHelper(writer, req, "/List")
+	fooDBG(writer, req, "/List")
 }
 
 func (fh *FooHandlers) Update( writer http.ResponseWriter, req *http.Request) {
-	fooHandlerHelper(writer, req, "/Update")
+	fooDBG(writer, req, "/Update")
 }
 
 // helper
 // lowercase name for :: unexported func
-func fooHandlerHelper (
+func fooDBG (
 	writer http.ResponseWriter,
 	req *http.Request,
 	endpoint string,
