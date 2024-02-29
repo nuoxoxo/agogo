@@ -1,5 +1,6 @@
-__:wind_face: Chi \
-:small_orange_diamond: Redis__
+- Chi 
+- Redis 
+- Docker 
 
 <details><summary>1.2</summary>
 
