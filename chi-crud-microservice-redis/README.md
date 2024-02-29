@@ -1,8 +1,15 @@
-# 1.2
+# Chi :wind_face: + Redis :small_orange_diamond:
+
+<details><summary>1.2</summary>
+
 ```
 $ go get -u github.com/go-chi/chi/v5
 ```
-# 1.1
+
+</details>
+
+<details><summary>1.1</summary>
+
 ```go
 package main
 
@@ -44,8 +51,11 @@ func handler(writer http.ResponseWriter, req *http.Request) {
 }
 
 ```
-# 1
-`http.Server` - basic handler - `server.ListenAndServe` - 
+</details>
+
+<details><summary>1</summary>
+
+	`http.Server` - basic handler - `server.ListenAndServe` - 
 ```
 ### Do after doing the following
 
@@ -74,3 +84,5 @@ func handler (writer http.ResponseWriter, req *http.Request) {
 	writer.Write( []byte("Hello, World!") )
 }
 ```
+
+</details>
