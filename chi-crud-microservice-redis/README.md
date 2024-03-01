@@ -1,4 +1,4 @@
-### Run Redis ___either___ on brew
+### Run Redis ___either___ on Brew
 ```
 $ brew services start redis
 ```
