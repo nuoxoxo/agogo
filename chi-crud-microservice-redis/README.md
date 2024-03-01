@@ -1,7 +1,15 @@
+### Run Redis ___either___ on Brew
 ```
 $ brew services start redis
+```
+### ___or___ on Docker
+```
 $ redis-cli -h 127.0.0.1 -p 6379
+```
+### Redis CLI
+```
 $ docker run -p 6379:6379 redis:latest
+127.0.0.1:6379> KEYS * 
 ```
 
 
