@@ -11,6 +11,6 @@ func main() {
 	app := application.New()
 	err := app.Start(context.TODO()) // means that we will impl. it later on
 	if err != nil {
-		fmt.Errorf("/err: %w", err)
+		fmt.Println("/failed to start app: %w", err)
 	}
 }
