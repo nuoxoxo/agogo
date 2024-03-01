@@ -27,3 +27,5 @@ go.work
 # Go Modules
 # go.mod
 go.sum
+
+.DS_Store
