@@ -1,4 +1,4 @@
-module github.com/nuoxoxo/gg/tree/main/gin-sandbox
+module github.com/nuoxoxoagogotree/main/gin-sandbox
 
 go 1.18
 
