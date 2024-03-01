@@ -26,6 +26,7 @@ func setupRoutes() *chi.Mux {
 }
 
 func setupCommandsRoutes(router chi.Router) {
+
 	cmdHandlers := &handlers.CommandHandlers{}
 	router.Get("/", cmdHandlers.List)
 	router.Post("/", cmdHandlers.Create)
@@ -35,6 +36,7 @@ func setupCommandsRoutes(router chi.Router) {
 }
 
 func setupFooRoutes(router chi.Router) {
+
 	fooHandlers := &handlers.FooHandlers{}
 	router.Get("/", fooHandlers.Get)
 	router.Post("/", fooHandlers.Create)
@@ -42,6 +44,7 @@ func setupFooRoutes(router chi.Router) {
 }
 
 func setupBarRoutes(router chi.Router) {
+
 	barHandlers := &handlers.BarHandlers{}
 	router.Get("/", barHandlers.Get)
 	router.Post("/", barHandlers.Create)

@@ -11,6 +11,7 @@ type App struct {
 }
 
 func New() *App {
+
 	app := &App{
 		router: setupRoutes(),
 	}
@@ -18,6 +19,7 @@ func New() *App {
 }
 
 func (a *App) Start(ctx context.Context) error {
+
 	server := &http.Server{
 		Addr:    ":10086",
 		Handler: a.router,
