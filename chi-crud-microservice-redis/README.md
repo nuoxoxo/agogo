@@ -1,3 +1,10 @@
+```
+$ brew services start redis
+$ redis-cli -h 127.0.0.1 -p 6379
+$ docker run -p 6379:6379 redis:latest
+```
+
+
 - Chi 
 - Redis 
 - Docker 
