@@ -3,14 +3,27 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"os/signal"
+	"reflect"
+	"runtime"
 
 	"github.com/nuoxoxo/agogo/tree/main/chi-crud-microservice-redis/application"
 )
 
 func main() {
 	app := application.New()
-	err := app.Start(context.TODO()) // means that we will impl. it later on
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer cancel()
+	err := app.Start(ctx)
 	if err != nil {
-		fmt.Errorf("/err: %w", err)
+		fmt.Println("/failed to start app:\n", err)
 	}
+
+	// error logger DIY
+	fmt.Println("\n", whoAmI(app.Start))
+}
+
+func whoAmI(i interface{}) string {
+	return "/func " + runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
 }
