@@ -1,8 +1,8 @@
-### to run Redis, use ___either___ brew
+### Run Redis ___either___ on brew
 ```
 $ brew services start redis
 ```
-### ___or___ Docker
+### ___or___ on Docker
 ```
 $ redis-cli -h 127.0.0.1 -p 6379
 ```
