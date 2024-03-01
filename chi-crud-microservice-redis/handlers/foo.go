@@ -7,21 +7,21 @@ import (
 
 type FooHandlers struct{}
 
-func (fh *FooHandlers) Create( writer http.ResponseWriter, req *http.Request) {
-	fooDBG(writer, req, "/Create")
+func (fh *FooHandlers) Create(writer http.ResponseWriter, req *http.Request) {
+	DBG_foo(writer, req, "/Create")
 }
 
-func (fh *FooHandlers) Get( writer http.ResponseWriter, req *http.Request) {
-	fooDBG(writer, req, "/List")
+func (fh *FooHandlers) Get(writer http.ResponseWriter, req *http.Request) {
+	DBG_foo(writer, req, "/List")
 }
 
-func (fh *FooHandlers) Update( writer http.ResponseWriter, req *http.Request) {
-	fooDBG(writer, req, "/Update")
+func (fh *FooHandlers) Update(writer http.ResponseWriter, req *http.Request) {
+	DBG_foo(writer, req, "/Update")
 }
 
 // helper
 // lowercase name for :: unexported func
-func fooDBG (
+func DBG_foo(
 	writer http.ResponseWriter,
 	req *http.Request,
 	endpoint string,

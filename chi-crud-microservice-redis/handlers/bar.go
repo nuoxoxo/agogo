@@ -11,26 +11,26 @@ func (bh *BarHandlers) Create(
 	writer http.ResponseWriter,
 	req *http.Request,
 ) {
-	barDBG(writer, req, "/Create")
+	DBG_bar(writer, req, "/Create")
 }
 
 func (bh *BarHandlers) Get(
 	writer http.ResponseWriter,
 	req *http.Request,
 ) {
-	barDBG(writer, req, "/List")
+	DBG_bar(writer, req, "/List")
 }
 
 func (bh *BarHandlers) Update(
 	writer http.ResponseWriter,
 	req *http.Request,
 ) {
-	barDBG(writer, req, "/Update")
+	DBG_bar(writer, req, "/Update")
 }
 
 // Helper
 
-func barDBG (
+func DBG_bar(
 	writer http.ResponseWriter,
 	req *http.Request,
 	endpoint string,
