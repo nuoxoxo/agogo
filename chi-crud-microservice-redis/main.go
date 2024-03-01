@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/nuoxoxoagogotree/main/chi-crud-microservice-redis/application"
+
+	"github.com/nuoxoxo/agogo/tree/main/chi-crud-microservice-redis/application"
 )
 
 func main() {

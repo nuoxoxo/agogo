@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/nuoxoxoagogotree/main/chi-crud-microservice-redis/handlers"
+	"github.com/nuoxoxo/agogo/tree/main/chi-crud-microservice-redis/handlers"
 )
 
 func setupRoutes() *chi.Mux {

@@ -1,4 +1,4 @@
-module github.com/nuoxoxoagogotree/main/chi-crud-microservice-redis
+module github.com/nuoxoxo/agogo/tree/main/chi-crud-microservice-redis
 
 go 1.18
 
